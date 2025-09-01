@@ -12,8 +12,7 @@ const ReviewDetails = async ({
   }
   return (
     <div>
-      You are viewing Details Product {productId} having deatils of review{" "}
-      {reviewId}
+      This is the {reviewId} review of Product {productId}
     </div>
   );
 };

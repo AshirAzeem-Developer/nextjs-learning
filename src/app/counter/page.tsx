@@ -1,6 +1,6 @@
 import Counter from "./counter";
-
-export const metadata = {
+import { Metadata } from "next";
+export const metadata: Metadata = {
   title: "Counter",
   description: "This is the Counter Description",
 };

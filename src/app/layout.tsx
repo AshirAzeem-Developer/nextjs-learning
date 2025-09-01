@@ -1,5 +1,10 @@
-export const metadata = {
-  title: "Layout Meta Data",
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: {
+    default: "Layout Meta Title ",
+    template: " %s | NextJs-learning",
+  },
   description: "This is the Layout metadata description",
 };
 

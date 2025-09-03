@@ -1,4 +1,6 @@
-import { notFound } from "next/navigation";
+// import { notFound } from "next/navigation";
+"use client";
+
 import React from "react";
 
 const ReviewDetails = async ({
@@ -8,7 +10,8 @@ const ReviewDetails = async ({
 }) => {
   const { reviewId, productId } = await params;
   if (parseInt(reviewId) > 1000) {
-    return notFound();
+    // return notFound();
+    throw new Error("Id Should be Less than 1000");
   }
   return (
     <div>

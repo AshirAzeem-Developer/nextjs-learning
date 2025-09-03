@@ -20,12 +20,13 @@ export default function AuthLayout({
       <body className={`antialiased`}>
         {children}
 
-        {navLinks.map((link) => {
+        {navLinks.map((link, index) => {
           const isActive =
             pathname === link.href ||
             (pathname.startsWith(link.href) && link.href !== "/");
           return (
             <Link
+              key={index}
               className={isActive ? "font-bold mr-4" : "mr-4"}
               href={link.href}
             >

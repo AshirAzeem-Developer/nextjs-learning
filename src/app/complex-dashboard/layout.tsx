@@ -1,3 +1,4 @@
+import { DashboardProvider } from "@/utils/dashboard-context";
 import React from "react";
 
 const ComplexDashboardLayout = ({
@@ -12,16 +13,18 @@ const ComplexDashboardLayout = ({
   notifications: React.ReactNode;
 }) => {
   return (
-    <div>
-      {children}
-      <div className="flex flex-row ">
-        <div className="flex flex-col">
-          {revenue}
-          {users}
+    <DashboardProvider>
+      <div>
+        {children}
+        <div className="flex flex-row ">
+          <div className="flex flex-col">
+            {revenue}
+            {users}
+          </div>
+          <div className="flex flex-1">{notifications}</div>
         </div>
-        <div className="flex flex-1">{notifications}</div>
       </div>
-    </div>
+    </DashboardProvider>
   );
 };
 

@@ -1,17 +1,24 @@
+"use client";
 import { Card } from "@/components/card";
 import Link from "next/link";
 import React from "react";
-
+import { useDashboard } from "@/utils/dashboard-context";
+import ArchivedNotificationsPage from "./archived/page";
 const Notifications = () => {
+  const { setNotificationView } = useDashboard();
+  const { state } = useDashboard();
+  if (state.notificationView === "archived") {
+    return <ArchivedNotificationsPage />;
+  }
   return (
     <Card>
-      Default Fallback for Notifications
-      <Link
-        href={"/complex-dashboard/archived"}
+      Notifications
+      <button
+        onClick={() => setNotificationView("archived")}
         className="text-blue-800 underline"
       >
         Archived
-      </Link>
+      </button>
     </Card>
   );
 };

@@ -3,7 +3,10 @@
 import React, { useState } from "react";
 
 const Counter = () => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
+  if (count % 2 === 0) {
+    throw new Error("Error from Counter");
+  }
 
   return (
     <div className="flex flex-col items-center justify-center">

@@ -10,7 +10,7 @@ const ErrorWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       {children}
-      <button onClick={() => setIsError(true)}>Simulate Error</button>
+      {/* <button onClick={() => setIsError(true)}>Simulate Error</button> */}
     </div>
   );
 };

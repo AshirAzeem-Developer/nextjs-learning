@@ -57,3 +57,21 @@ export async function PATCH(
     `Profile Updated Successfully ${JSON.stringify(UserData[indexForUpdation])}`
   );
 }
+
+export async function DELETE(
+  _request: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const id = (await params).id;
+
+  const indexOfData = UserData.findIndex(
+    (userData) => userData.id === parseInt(id)
+  );
+
+  console.log("Index of Data->", indexOfData);
+  if (indexOfData > -1) {
+    UserData.splice(indexOfData, 1);
+  }
+
+  return Response.json(UserData);
+}

@@ -11,17 +11,22 @@ type NewItem = {
   address: { street: string; city: string; zipCode: string };
 };
 
-export async function GET(query:NextRequest) {
-
-const searchParams = query.nextUrl.searchParams
-const searchTerm = searchParams.get('query')?.toLowerCase() || '';
-if (searchTerm) {
-
-  const filteredData = UserData.filter((user) =>user.firstName.toLowerCase().includes(searchTerm) || user.lastName.toLowerCase().includes(searchTerm) || user.email.toLowerCase().includes(searchTerm) || user.occupation.toLowerCase().includes(searchTerm) || user.address.city.toLowerCase().includes(searchTerm) || user.address.street.toLowerCase().includes(searchTerm) || user.address.zipCode.toLowerCase().includes(searchTerm)
-  );
-  return Response.json(filteredData);
-
-}
+export async function GET(query: NextRequest) {
+  const searchParams = query.nextUrl.searchParams;
+  const searchTerm = searchParams.get("query")?.toLowerCase() || "";
+  if (searchTerm) {
+    const filteredData = UserData.filter(
+      (user) =>
+        user.firstName.toLowerCase().includes(searchTerm) ||
+        user.lastName.toLowerCase().includes(searchTerm) ||
+        user.email.toLowerCase().includes(searchTerm) ||
+        user.occupation.toLowerCase().includes(searchTerm) ||
+        user.address.city.toLowerCase().includes(searchTerm) ||
+        user.address.street.toLowerCase().includes(searchTerm) ||
+        user.address.zipCode.toLowerCase().includes(searchTerm)
+    );
+    return Response.json(filteredData);
+  }
   return Response.json(UserData);
 }
 

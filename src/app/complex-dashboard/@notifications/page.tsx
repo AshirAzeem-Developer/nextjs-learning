@@ -1,6 +1,5 @@
 "use client";
 import { Card } from "@/components/card";
-import Link from "next/link";
 import React from "react";
 import { useDashboard } from "@/utils/dashboard-context";
 import ArchivedNotificationsPage from "./default";

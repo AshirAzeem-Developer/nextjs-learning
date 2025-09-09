@@ -1,12 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 
 const ErrorWrapper = ({ children }: { children: React.ReactNode }) => {
-  const [isError, setIsError] = useState(false);
+  // const [isError, setIsError] = useState(false);
 
-  if (isError) {
-    throw new Error("Error from ErrorWrapper");
-  }
+  // if (isError) {
+  //   throw new Error("Error from ErrorWrapper");
+  // }
   return (
     <div>
       {children}

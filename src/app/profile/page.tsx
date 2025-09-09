@@ -1,11 +1,10 @@
 "use client";
 
-import { fetchProfiledata } from "@/utils/profileHelper";
+import { fetchProfiledata, Profile } from "@/utils/profileHelper";
 import React, { useEffect, useState } from "react";
 
 const Profiles = () => {
-  const [data, setData] = useState<any>(null);
-  const [error, setError] = useState<any>(null);
+  const [data, setData] = useState<Profile[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
 
   useEffect(() => {
@@ -16,7 +15,6 @@ const Profiles = () => {
         console.log("Profile Data -> ", result);
       } catch (err) {
         console.error("Error -> ", err);
-        setError(err);
       }
     };
 
@@ -52,7 +50,7 @@ const Profiles = () => {
       </div>
 
       <ul>
-        {data?.map((profile: any) => (
+        {data?.map((profile: Profile) => (
           <li key={profile.id} className="mb-2 p-4 border rounded">
             <p>
               <strong>Name:</strong> {profile.firstName} {profile.lastName}

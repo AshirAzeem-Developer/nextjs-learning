@@ -1,6 +1,5 @@
 "use client";
 import { Card } from "@/components/card";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 

@@ -1,6 +1,8 @@
 import React from "react";
 import { Metadata } from "next";
 
+export const dynamicParams = false;
+
 type Props = {
   params: Promise<{ productId: string }>;
 };
@@ -15,19 +17,20 @@ export const generateMetadata = async ({
   };
 };
 
+export async function generateStaticParams() {
+  return [{ productId: "1" }, { productId: "2" }, { productId: "3" }];
+}
+
 const ProductDescription = async ({
   params,
 }: {
-  params: Promise<{ productId: string; reviewId: string }>;
+  params: Promise<{ productId: string }>;
 }) => {
-  const { productId, reviewId } = await params;
+  console.log("Product Description Page CAlled");
+  const { productId } = await params;
 
   if (productId >= "0") {
-    return (
-      <h1>
-        You are viewing review {reviewId} of product {productId}{" "}
-      </h1>
-    );
+    return <h1>You are viewing Deatils of product {productId} </h1>;
   }
   return <div>This is the Product Default Page </div>;
 };

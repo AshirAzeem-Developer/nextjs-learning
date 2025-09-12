@@ -1,8 +1,11 @@
-import { URL } from "@/utils/server-helper";
-import React from "react";
+import { ThemeContext } from "@/components/theme-provide";
+import React, { useContext } from "react";
 
 const ServerOnly = () => {
-  console.log("This is the Server URL", URL);
+  const theme = useContext(ThemeContext);
+
+  console.log("Theme is -> ", theme.color.primary);
+
   return <div>ServerOnly</div>;
 };
 

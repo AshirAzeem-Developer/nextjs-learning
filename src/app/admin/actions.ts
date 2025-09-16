@@ -5,7 +5,7 @@ import { Roles } from "../../../globals";
 import { revalidatePath } from "next/cache";
 
 export async function setRole(formData: FormData) {
-  const { sessionClaims } = await auth();
+  const { sessionClaims } = (await auth()) as any;
 
   // Check that the user trying to set the role is an admin
   if (sessionClaims?.metadata?.role !== "admin") {
@@ -27,7 +27,7 @@ export async function setRole(formData: FormData) {
 }
 
 export async function removeRole(formData: FormData) {
-  const { sessionClaims } = await auth();
+  const { sessionClaims } = (await auth()) as any;
 
   if (sessionClaims?.metadata?.role !== "admin") {
     throw new Error("Not Authorized");

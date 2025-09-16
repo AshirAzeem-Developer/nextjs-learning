@@ -1,6 +1,20 @@
-import { clerkMiddleware } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-export default clerkMiddleware();
+// const isProtectedRoute = createRouteMatcher(["/user-profile"]);
+
+//This is the reverse Logic
+
+const isPublicRoute = createRouteMatcher(["/", "/sign-in(.*)", "/sign-up(.*)"]);
+
+export default clerkMiddleware(async (auth, req) => {
+  // if (!isPublicRoute(req)) await auth.protect();
+
+  const { userId, redirectToSignIn } = await auth();
+
+  if (!userId && !isPublicRoute(req)) {
+    return redirectToSignIn();
+  }
+});
 
 export const config = {
   matcher: [
